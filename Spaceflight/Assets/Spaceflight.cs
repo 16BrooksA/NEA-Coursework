@@ -11,6 +11,8 @@ public class Spaceflight : MonoBehaviour
     public float pitch;
     public float roll;
 
+    public ParticleSystem particles;
+
     // Vector3 takes value for x, y, z axis
     public Vector3 moveDirection;
     public Vector3 rotateDirection;
@@ -43,5 +45,14 @@ public class Spaceflight : MonoBehaviour
     {
         rigidbody.AddForce(moveDirection);
         rigidbody.AddTorque(rotateDirection);
+
+        if(horizontalMovement < 0 || horizontalMovement > 0 && !particles.isPlaying)
+        {
+            particles.Play();
+        }
+        else if(particles.isPlaying)
+        {
+            particles.Stop();
+        }
     }
 }
