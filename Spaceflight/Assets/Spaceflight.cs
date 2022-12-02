@@ -7,8 +7,9 @@ public class Spaceflight : MonoBehaviour
     public float horizontalMovement;
     public float verticalMovement;
     public float jumpMovement;
-    public float horizontalRotation;
-    public float verticalRotation;
+    public float yaw;
+    public float pitch;
+    public float roll;
 
     // Vector3 takes value for x, y, z axis
     public Vector3 moveDirection;
@@ -29,11 +30,12 @@ public class Spaceflight : MonoBehaviour
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
         jumpMovement = Input.GetAxisRaw("Jump");
-        horizontalRotation = Input.GetAxisRaw("Horizontal2");
-        verticalRotation = Input.GetAxisRaw("Vertical2");
+        yaw = Input.GetAxisRaw("Yaw");
+        pitch = Input.GetAxisRaw("Pitch");
+        roll = Input.GetAxisRaw("Roll");
 
         moveDirection = transform.forward * verticalMovement + transform.right * horizontalMovement + transform.up * jumpMovement;
-        rotateDirection = transform.up * horizontalRotation + transform.right * verticalRotation;
+        rotateDirection = transform.up * yaw + transform.right * pitch + transform.forward * roll;
     }
     
     // FixedUpdate is called 50 times per second
