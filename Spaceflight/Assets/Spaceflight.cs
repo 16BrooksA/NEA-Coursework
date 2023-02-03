@@ -38,6 +38,17 @@ public class Spaceflight : MonoBehaviour
 
         moveDirection = transform.forward * verticalMovement + transform.right * horizontalMovement + transform.up * jumpMovement;
         rotateDirection = transform.up * yaw + transform.right * pitch + transform.forward * roll;
+
+        /*if(verticalMovement > 0)
+        {
+            particles.Play();
+            print("1");
+        }
+        else if(Input.GetKeyDown("m"))
+        {
+            particles.Stop();
+            print("0");
+        }*/
     }
     
     // FixedUpdate is called 50 times per second
@@ -46,13 +57,15 @@ public class Spaceflight : MonoBehaviour
         rigidbody.AddForce(moveDirection);
         rigidbody.AddTorque(rotateDirection);
 
-        if(horizontalMovement < 0 || horizontalMovement > 0 && !particles.isPlaying)
+        /*if(verticalMovement < 0 || verticalMovement > 0)
         {
             particles.Play();
+            print("1");
         }
-        else if(particles.isPlaying)
+        else if(verticalMovement == 0)
         {
             particles.Stop();
-        }
+            print("0");
+        }*/
     }
 }
