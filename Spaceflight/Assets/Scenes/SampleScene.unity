@@ -251,6 +251,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravitational_force: 0
+  distance: 0
+  Planet1: {fileID: 11633591}
+  spaceship: {fileID: 1143947366}
 --- !u!1 &75925779
 GameObject:
   m_ObjectHideFlags: 0
