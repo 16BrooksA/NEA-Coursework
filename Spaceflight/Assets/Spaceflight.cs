@@ -10,18 +10,26 @@ public class Spaceflight : MonoBehaviour
     public float yaw;
     public float pitch;
     public float roll;
+    public Vector3 grav;
+    public Vector3 x;
 
     public ParticleSystem particles;
+
+    public GameObject Planet1;
 
     // Vector3 takes value for x, y, z axis
     public Vector3 moveDirection;
     public Vector3 rotateDirection;
 
-    Rigidbody rigidbody;
+    new Rigidbody rigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
+        /*Planet1 = GameObject.Find("Planet1");
+        Planet planet = Planet1.GetComponent<Planet>();
+        grav = planet.gravity;*/
+
         // Asigns the rigidbody to my object
         rigidbody = GetComponent<Rigidbody>();
     }
@@ -35,6 +43,12 @@ public class Spaceflight : MonoBehaviour
         yaw = Input.GetAxisRaw("Yaw");
         pitch = Input.GetAxisRaw("Pitch");
         roll = Input.GetAxisRaw("Roll");
+
+        Planet1 = GameObject.Find("Planet1");
+        Planet planet = Planet1.GetComponent<Planet>();
+        grav = planet.gravity;
+
+        x = transform.forward;
 
         moveDirection = transform.forward * verticalMovement + transform.right * horizontalMovement + transform.up * jumpMovement;
         rotateDirection = transform.up * yaw + transform.right * pitch + transform.forward * roll;
@@ -56,6 +70,8 @@ public class Spaceflight : MonoBehaviour
     {
         rigidbody.AddForce(moveDirection);
         rigidbody.AddTorque(rotateDirection);
+
+        rigidbody.AddForce(grav);
 
         /*if(verticalMovement < 0 || verticalMovement > 0)
         {

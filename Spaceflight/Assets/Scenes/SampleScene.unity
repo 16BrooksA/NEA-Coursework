@@ -252,6 +252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravitational_force: 0
   distance: 0
+  angle: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: 0, z: 0}
   Planet1: {fileID: 11633591}
   spaceship: {fileID: 1143947366}
 --- !u!1 &75925779
@@ -663,7 +665,10 @@ MonoBehaviour:
   yaw: 0
   pitch: 0
   roll: 0
+  grav: {x: 0, y: 0, z: 0}
+  x: {x: 0, y: 0, z: 0}
   particles: {fileID: 1629337519}
+  Planet1: {fileID: 11633591}
   moveDirection: {x: 0, y: 0, z: 0}
   rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!54 &1143947368

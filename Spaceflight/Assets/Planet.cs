@@ -10,12 +10,14 @@ public class Planet : MonoBehaviour
     public float gravitational_force;
     public float distance;
     public Decimal dec_distance;
+    public Vector3 angle;
     public Decimal ship_mass;
+    public Vector3 gravity; 
 
     public GameObject Planet1;
     public GameObject spaceship;
 
-    Rigidbody rigidbody;
+    new Rigidbody rigidbody;
 
     void Start()
     {
@@ -34,11 +36,14 @@ public class Planet : MonoBehaviour
 
     void FixedUpdate()
     {
-        distance = Vector3.Distance(spaceship.transform.position, Planet1.transform.position);
+        distance = Vector3.Distance(spaceship.transform.position, Planet1.transform.position) * 6371146;
         dec_distance = Convert.ToDecimal(distance);
 
+        angle = (spaceship.transform.position - Planet1.transform.position);
         //Decimal result = Decimal.Multiply(gravitational_constant, planet_mass);
         gravitational_force = (float)((gravitational_constant * planet_mass * ship_mass) / (dec_distance * dec_distance));
+
+        gravity = (gravitational_force * angle);
 
     }
 }
