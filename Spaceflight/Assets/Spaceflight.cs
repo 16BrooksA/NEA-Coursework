@@ -50,7 +50,7 @@ public class Spaceflight : MonoBehaviour
 
         x = transform.forward;
 
-        moveDirection = transform.forward * verticalMovement + transform.right * horizontalMovement + transform.up * jumpMovement;
+        moveDirection = transform.forward * verticalMovement * 10000 + transform.right * horizontalMovement * 10000 + transform.up * jumpMovement * 10000;
         rotateDirection = transform.up * yaw + transform.right * pitch + transform.forward * roll;
 
         /*if(verticalMovement > 0)
@@ -71,7 +71,7 @@ public class Spaceflight : MonoBehaviour
         rigidbody.AddForce(moveDirection);
         rigidbody.AddTorque(rotateDirection);
 
-        rigidbody.AddForce(grav);
+        rigidbody.AddForce(-grav);
 
         /*if(verticalMovement < 0 || verticalMovement > 0)
         {
