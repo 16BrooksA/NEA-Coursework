@@ -21,7 +21,7 @@ public class Planet : MonoBehaviour
 
     void Start()
     {
-        Planet1 = GameObject.Find("Planet1");
+        Planet1 = GameObject.Find("417 BigAl b");
 
         spaceship = GameObject.Find("Spaceship");
         Spaceship ship = spaceship.GetComponent<Spaceship>();
@@ -36,7 +36,8 @@ public class Planet : MonoBehaviour
 
     void FixedUpdate()
     {
-        distance = Vector3.Distance(spaceship.transform.position, Planet1.transform.position) * 637114;
+        //6371146
+        distance = Vector3.Distance(spaceship.transform.position, Planet1.transform.position) * 300000;
         dec_distance = Convert.ToDecimal(distance);
 
         angle = (spaceship.transform.position - Planet1.transform.position);
