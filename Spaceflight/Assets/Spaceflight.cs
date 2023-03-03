@@ -51,7 +51,7 @@ public class Spaceflight : MonoBehaviour
         x = transform.forward;
 
         moveDirection = transform.forward * verticalMovement * 10000 + transform.right * horizontalMovement * 10000 + transform.up * jumpMovement * 10000;
-        rotateDirection = transform.up * yaw + transform.right * pitch + transform.forward * roll;
+        rotateDirection = transform.up * yaw * 100 + transform.right * pitch * 100 + transform.forward * roll * 100;
 
         /*if(verticalMovement > 0)
         {

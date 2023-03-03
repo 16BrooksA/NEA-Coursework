@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 11633597}
   - component: {fileID: 11633598}
   m_Layer: 0
-  m_Name: 417 BigAl b
+  m_Name: BigAl_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11633591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.332, y: 1.381, z: 91.4}
+  m_LocalPosition: {x: 0, y: 0, z: 91.4}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 75925781}
   - component: {fileID: 75925780}
   m_Layer: 0
-  m_Name: BigAl b I
+  m_Name: BigAl_b_I
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75925779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.5, y: 1.381, z: -153.3}
+  m_LocalPosition: {x: 0, y: 0, z: -153.3}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -777,6 +777,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spaceship_mass: 1000
+--- !u!65 &1143947381
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143947366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.86484116, y: 0.32853347, z: 1.3358217}
+  m_Center: {x: 0, y: 0.16425985, z: 0}
 --- !u!1 &1629337516
 GameObject:
   m_ObjectHideFlags: 0
