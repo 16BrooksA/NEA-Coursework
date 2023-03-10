@@ -25,7 +25,7 @@ public class Planet : MonoBehaviour
 
         spaceship = GameObject.Find("Spaceship");
         Spaceship ship = spaceship.GetComponent<Spaceship>();
-        ship_mass = Convert.ToDecimal(ship.spaceship_mass);
+        ship_mass = Convert.ToDecimal(ship.get_spaceship_mass());
 
         /*float distance = Vector3.Distance(spaceship.transform.position, Planet1.transform.position);
         Decimal dec_distance = Convert.ToDecimal(distance);*/

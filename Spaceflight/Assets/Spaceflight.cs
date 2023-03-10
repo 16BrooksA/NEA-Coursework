@@ -44,8 +44,8 @@ public class Spaceflight : MonoBehaviour
         pitch = Input.GetAxisRaw("Pitch");
         roll = Input.GetAxisRaw("Roll");
 
-        Planet1 = GameObject.Find("417 BigAl b");
-        Planet planet = Planet1.GetComponent<Planet>();
+        Planet1 = GameObject.Find("BigAl_b");
+        PlanetTest planet = Planet1.GetComponent<PlanetTest>();
         grav = planet.gravity;
 
         x = transform.forward;

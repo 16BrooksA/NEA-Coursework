@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class CelestialBody : MonoBehaviour
 {
-    public Decimal big_mass;
-    public Decimal small_mass;
+    //public Decimal big_mass;
+    //public Decimal small_mass;
     public Decimal gravitational_constant = 6.6743e-11m;
     public float gravitational_force;
     public float distance;
     public Decimal dec_distance;
     public Vector3 angle;
     public Vector3 gravity;
-    public string big_body;
-    public string small_body;
+    //public string big_body;
+    //public string small_body;
 
     public GameObject body1;
     public GameObject body2;
