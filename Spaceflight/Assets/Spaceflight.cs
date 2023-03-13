@@ -11,7 +11,6 @@ public class Spaceflight : MonoBehaviour
     public float pitch;
     public float roll;
     public Vector3 grav;
-    public Vector3 x;
 
     public ParticleSystem particles;
 
@@ -26,33 +25,12 @@ public class Spaceflight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*Planet1 = GameObject.Find("Planet1");
-        Planet planet = Planet1.GetComponent<Planet>();
-        grav = planet.gravity;*/
-
-        // Asigns the rigidbody to my object
         rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalMovement = Input.GetAxisRaw("Horizontal");
-        verticalMovement = Input.GetAxisRaw("Vertical");
-        jumpMovement = Input.GetAxisRaw("Jump");
-        yaw = Input.GetAxisRaw("Yaw");
-        pitch = Input.GetAxisRaw("Pitch");
-        roll = Input.GetAxisRaw("Roll");
-
-        Planet1 = GameObject.Find("BigAl_b");
-        PlanetTest planet = Planet1.GetComponent<PlanetTest>();
-        grav = planet.gravity;
-
-        x = transform.forward;
-
-        moveDirection = transform.forward * verticalMovement * 10000 + transform.right * horizontalMovement * 10000 + transform.up * jumpMovement * 10000;
-        rotateDirection = transform.up * yaw * 100 + transform.right * pitch * 100 + transform.forward * roll * 100;
-
         /*if(verticalMovement > 0)
         {
             particles.Play();
@@ -68,10 +46,24 @@ public class Spaceflight : MonoBehaviour
     // FixedUpdate is called 50 times per second
     void FixedUpdate()
     {
+        horizontalMovement = Input.GetAxisRaw("Horizontal");
+        verticalMovement = Input.GetAxisRaw("Vertical");
+        jumpMovement = Input.GetAxisRaw("Jump");
+        yaw = Input.GetAxisRaw("Yaw");
+        pitch = Input.GetAxisRaw("Pitch");
+        roll = Input.GetAxisRaw("Roll");
+
+        moveDirection = transform.forward * verticalMovement * 10000 + transform.right * horizontalMovement * 10000 + transform.up * jumpMovement * 10000;
+        rotateDirection = transform.up * yaw * 100 + transform.right * pitch * 100 + transform.forward * roll * 100;
+
+        Planet1 = GameObject.Find("BigAl_b");
+        Planet planet = Planet1.GetComponent<Planet>();
+        grav = planet.gravity;
+
         rigidbody.AddForce(moveDirection);
         rigidbody.AddTorque(rotateDirection);
 
-        rigidbody.AddForce(-grav);
+        rigidbody.AddForce(grav);
 
         /*if(verticalMovement < 0 || verticalMovement > 0)
         {

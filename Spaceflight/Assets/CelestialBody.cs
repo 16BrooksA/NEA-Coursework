@@ -13,6 +13,7 @@ public class CelestialBody : MonoBehaviour
     public Decimal dec_distance;
     public Vector3 angle;
     public Vector3 gravity;
+    public float orbital_velocity;
     //public string big_body;
     //public string small_body;
 
@@ -30,10 +31,24 @@ public class CelestialBody : MonoBehaviour
         dec_distance = Convert.ToDecimal(distance);
 
         angle = (body2.transform.position - body1.transform.position);
-        gravitational_force = (float)((gravitational_constant * big_mass * small_mass) / (dec_distance * dec_distance));
+        gravitational_force = -((float)((gravitational_constant * big_mass * small_mass) / (dec_distance * dec_distance)));
 
         gravity = gravitational_force * angle;
 
         return gravity;
+    }
+
+    public float get_orbital_velocity(string big_body, Decimal big_mass, string small_body)
+    {
+        body1 = GameObject.Find(big_body);
+
+        body2 = GameObject.Find(small_body);
+
+        distance = Vector3.Distance(body2.transform.position, body1.transform.position) * 300000;
+        dec_distance = Convert.ToDecimal(distance);
+
+        orbital_velocity = Mathf.Sqrt((float)((gravitational_constant * big_mass) / (dec_distance)));
+
+        return orbital_velocity;
     }
 }
