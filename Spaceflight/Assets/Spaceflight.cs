@@ -58,7 +58,7 @@ public class Spaceflight : MonoBehaviour
 
         Planet1 = GameObject.Find("BigAl_b");
         Planet planet = Planet1.GetComponent<Planet>();
-        grav = planet.gravity;
+        grav = planet.spaceship_gravity;
 
         rigidbody.AddForce(moveDirection);
         rigidbody.AddTorque(rotateDirection);
