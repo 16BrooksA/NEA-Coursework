@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Spaceship : MonoBehaviour
 {
-    public float spaceship_mass = 1000;
+    private float spaceship_mass = 1000;
+
+    public float get_spaceship_mass()
+    {
+        return spaceship_mass;
+    }
 
     void Start()
     {

@@ -3,48 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Planet : MonoBehaviour
+public class Planet : CelestialBody
 {
-    public Decimal planet_mass = 5.9722e24m;
-    public Decimal gravitational_constant = 6.6743e-11m;
-    public float gravitational_force;
-    public float distance;
-    public Decimal dec_distance;
-    public Vector3 angle;
-    public Decimal ship_mass;
-    public Vector3 gravity; 
+    public Double planet_mass = 5.9722e24;
+    public Double ship_mass;
+    public Double moon_mass;
+    public string Spaceship = "Spaceship";
+    public string BigAl_b = "BigAl_b";
+    public Vector3 spaceship_gravity;
+    public Vector3 moon_gravity;
 
-    public GameObject Planet1;
     public GameObject spaceship;
+    public GameObject moon;
 
-    new Rigidbody rigidbody;
-
+    // Start is called before the first frame update
     void Start()
     {
-        Planet1 = GameObject.Find("417 BigAl b");
-
         spaceship = GameObject.Find("Spaceship");
         Spaceship ship = spaceship.GetComponent<Spaceship>();
-        ship_mass = Convert.ToDecimal(ship.spaceship_mass);
+        ship_mass = Convert.ToDouble(ship.get_spaceship_mass());
 
-        /*float distance = Vector3.Distance(spaceship.transform.position, Planet1.transform.position);
-        Decimal dec_distance = Convert.ToDecimal(distance);*/
-
-        // Asigns the rigidbody to my object
-        rigidbody = GetComponent<Rigidbody>();
+        moon = GameObject.Find("BigAl_b_i");
+        Moon BigAl_b_i = moon.GetComponent<Moon>();
+        moon_mass = BigAl_b_i.get_moon_mass();
     }
 
+    // Update is called once per frame
     void FixedUpdate()
     {
-        //6371146
-        distance = Vector3.Distance(spaceship.transform.position, Planet1.transform.position) * 300000;
-        dec_distance = Convert.ToDecimal(distance);
+        spaceship_gravity = calculate_gravity("BigAl_b", planet_mass, "Spaceship", ship_mass);
 
-        angle = (spaceship.transform.position - Planet1.transform.position);
-        //Decimal result = Decimal.Multiply(gravitational_constant, planet_mass);
-        gravitational_force = (float)((gravitational_constant * planet_mass * ship_mass) / (dec_distance * dec_distance));
-
-        gravity = gravitational_force * angle;
-
+        moon_gravity = calculate_gravity("BigAl_b", planet_mass, "BigAl_b_i", moon_mass);
     }
 }
