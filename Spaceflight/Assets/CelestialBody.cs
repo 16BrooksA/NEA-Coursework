@@ -44,7 +44,7 @@ public class CelestialBody : MonoBehaviour
 
         body2 = GameObject.Find(small_body);
 
-        distance = Vector3.Distance(body2.transform.position, body1.transform.position) * 300000;
+        distance = Vector3.Distance(body2.transform.position, body1.transform.position) * 30000000;
         dec_distance = Convert.ToDouble(distance);
 
         orbital_velocity = Mathf.Sqrt((float)((gravitational_constant * big_mass) / (dec_distance)));

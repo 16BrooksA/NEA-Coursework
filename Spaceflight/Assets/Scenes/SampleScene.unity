@@ -343,7 +343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75925779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -603}
+  m_LocalPosition: {x: 0, y: 0, z: -1002}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -372,7 +372,7 @@ MonoBehaviour:
   body1: {fileID: 0}
   body2: {fileID: 0}
   planet_mass: 5.9722e+24
-  moon_mass: 7.3e+22
+  moon_mass: 7300
   BigAl_b: BigAl_b
   BigAl_b_i: BigAl_b_i
   grav: {x: 0, y: 0, z: 0}
@@ -388,7 +388,7 @@ Rigidbody:
   m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -461,7 +461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321375858}
   m_LocalRotation: {x: 0.7054948, y: 0.047718436, z: -0.101885855, w: 0.699728}
-  m_LocalPosition: {x: 114, y: 1572, z: 91}
+  m_LocalPosition: {x: 98, y: 1356, z: 91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -542,7 +542,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 4.0545206e-12}
+  m_BoundingSphereOverride: {x: 4.1586112e+21, y: 1.7861762e+25, z: 4.3e-44, w: 2.28e-42}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -636,7 +636,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 4.0545206e-12}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 0, z: 0, w: 1242077}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
