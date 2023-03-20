@@ -1,4 +1,4 @@
-  using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +14,8 @@ public class CelestialBody : MonoBehaviour
     public Vector3 angle;
     public Vector3 gravity;
     public float orbital_velocity;
+    public float x_velocity;
+    public float z_velocity;
     //public string big_body;
     //public string small_body;
 
@@ -38,7 +40,7 @@ public class CelestialBody : MonoBehaviour
         return gravity;
     }
 
-    public float get_orbital_velocity(string big_body, Double big_mass, string small_body)
+    public float get_x_velocity(string big_body, Double big_mass, string small_body)
     {
         body1 = GameObject.Find(big_body);
 
@@ -49,6 +51,28 @@ public class CelestialBody : MonoBehaviour
 
         orbital_velocity = Mathf.Sqrt((float)((gravitational_constant * big_mass) / (dec_distance)));
 
-        return orbital_velocity;
+        angle = (body2.transform.position - body1.transform.position);
+
+        x_velocity = orbital_velocity * Mathf.Cos(angle);
+
+        return x_velocity;
+    }
+
+    public float get_z_velocity(string big_body, Double big_mass, string small_body)
+    {
+        body1 = GameObject.Find(big_body);
+
+        body2 = GameObject.Find(small_body);
+
+        distance = Vector3.Distance(body2.transform.position, body1.transform.position) * 30000000;
+        dec_distance = Convert.ToDouble(distance);
+
+        orbital_velocity = Mathf.Sqrt((float)((gravitational_constant * big_mass) / (dec_distance)));
+
+        angle = (body2.transform.position - body1.transform.position);
+
+        z_velocity = orbital_velocity * Mathf.Sin(angle);
+
+        return z_velocity;
     }
 }
