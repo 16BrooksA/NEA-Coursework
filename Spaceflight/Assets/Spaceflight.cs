@@ -11,10 +11,14 @@ public class Spaceflight : MonoBehaviour
     public float pitch;
     public float roll;
     public Vector3 grav;
+    public float myangle;
 
     public ParticleSystem particles;
 
     public GameObject Planet1;
+
+    public GameObject BAB;
+    public GameObject fly;
 
     // Vector3 takes value for x, y, z axis
     public Vector3 moveDirection;
@@ -46,6 +50,8 @@ public class Spaceflight : MonoBehaviour
     // FixedUpdate is called 50 times per second
     void FixedUpdate()
     {
+        myangle = Vector3.SignedAngle(BAB.transform.position, fly.transform.position, Vector3.up);
+
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
         jumpMovement = Input.GetAxisRaw("Jump");
