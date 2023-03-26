@@ -11,7 +11,8 @@ public class CelestialBody : MonoBehaviour
     public float gravitational_force;
     public float distance;
     public Double dec_distance;
-    public Vector3 angle;
+    public Vector3 gravity_vector;
+    public Vector3 normalised_gravity_vector;
     public float x_local_angle;
     public float x_radian_angle;
     public float z_local_angle;
@@ -33,13 +34,14 @@ public class CelestialBody : MonoBehaviour
         body2 = GameObject.Find(small_body);
         
         //6371146 = radius of earth (use this to scale sizes of planets)
-        distance = Vector3.Distance(body2.transform.position, body1.transform.position) * 300000;
+        distance = Vector3.Distance(body2.transform.position, body1.transform.position)* 20000;
         dec_distance = Convert.ToDouble(distance);
 
-        angle = (body2.transform.position - body1.transform.position);
+        gravity_vector = (body2.transform.position - body1.transform.position);
+        normalised_gravity_vector = Vector3.Normalize(gravity_vector);
         gravitational_force = -((float)((gravitational_constant * big_mass * small_mass) / (dec_distance * dec_distance)));
 
-        gravity = gravitational_force * angle;
+        gravity = gravitational_force * normalised_gravity_vector;
 
         return gravity;
     }
@@ -50,10 +52,10 @@ public class CelestialBody : MonoBehaviour
 
         body2 = GameObject.Find(small_body);
 
-        distance = Vector3.Distance(body2.transform.position, body1.transform.position) * 300000;
+        distance = Vector3.Distance(body2.transform.position, body1.transform.position) * 20000;
         dec_distance = Convert.ToDouble(distance);
 
-        orbital_velocity = Mathf.Sqrt((float)((gravitational_constant * big_mass) / (dec_distance)));
+        orbital_velocity = (Mathf.Sqrt((float)((gravitational_constant * big_mass) / dec_distance))) / 20000;
 
         return orbital_velocity;
     }

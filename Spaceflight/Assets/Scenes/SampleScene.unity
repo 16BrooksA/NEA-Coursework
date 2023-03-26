@@ -237,7 +237,8 @@ MonoBehaviour:
   gravitational_force: 0
   distance: 0
   dec_distance: 0
-  angle: {x: 0, y: 0, z: 0}
+  gravity_vector: {x: 0, y: 0, z: 0}
+  normalised_gravity_vector: {x: 0, y: 0, z: 0}
   x_local_angle: 0
   x_radian_angle: 0
   z_local_angle: 0
@@ -349,7 +350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75925779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -20000}
+  m_LocalPosition: {x: 0, y: 0, z: -15000}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -373,7 +374,8 @@ MonoBehaviour:
   gravitational_force: 0
   distance: 0
   dec_distance: 0
-  angle: {x: 0, y: 0, z: 0}
+  gravity_vector: {x: 0, y: 0, z: 0}
+  normalised_gravity_vector: {x: 0, y: 0, z: 0}
   x_local_angle: 0
   x_radian_angle: 0
   z_local_angle: 0
@@ -385,10 +387,11 @@ MonoBehaviour:
   body1: {fileID: 0}
   body2: {fileID: 0}
   planet_mass: 5.9722e+24
-  moon_mass: 1000
+  moon_mass: 7.347e+22
   BigAl_b: BigAl_b
   BigAl_b_i: BigAl_b_i
   grav: {x: 0, y: 0, z: 0}
+  moon_rigidbody: {fileID: 0}
   Planet1: {fileID: 0}
 --- !u!54 &75925785
 Rigidbody:
@@ -555,7 +558,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6.94e-43, y: 9.4e-44, z: 0, w: -1.1361493e+10}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 0, z: 0, w: -2.4012733e+16}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -781,13 +784,11 @@ MonoBehaviour:
   pitch: 0
   roll: 0
   grav: {x: 0, y: 0, z: 0}
-  myangle: 0
   particles: {fileID: 1629337519}
   Planet1: {fileID: 11633591}
-  BAB: {fileID: 11633591}
-  fly: {fileID: 1143947366}
   moveDirection: {x: 0, y: 0, z: 0}
   rotateDirection: {x: 0, y: 0, z: 0}
+  spaceship_rigidbody: {fileID: 0}
 --- !u!54 &1143947368
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -821,7 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe072db783f48540b1fa3e028b623eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &1143947381
+--- !u!65 &1143947384
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5667,7 +5668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2705286137011316497, guid: b3c0a61dfe701344d819eb701e83f4b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -800
+      value: -901
       objectReference: {fileID: 0}
     - target: {fileID: 2705286137011316497, guid: b3c0a61dfe701344d819eb701e83f4b7, type: 3}
       propertyPath: m_LocalRotation.w

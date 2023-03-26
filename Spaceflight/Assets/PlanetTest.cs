@@ -10,7 +10,7 @@ public class PlanetTest : MonoBehaviour
     public float gravitational_force;
     public float distance;
     public Decimal dec_distance;
-    public Vector3 angle;
+    public Vector3 gravity_vector;
     public Decimal ship_mass;
     public Vector3 gravity; 
 
@@ -40,11 +40,11 @@ public class PlanetTest : MonoBehaviour
         distance = Vector3.Distance(spaceship.transform.position, Planet1.transform.position) * 300000;
         dec_distance = Convert.ToDecimal(distance);
 
-        angle = (spaceship.transform.position - Planet1.transform.position);
+        gravity_vector = (spaceship.transform.position - Planet1.transform.position);
         //Decimal result = Decimal.Multiply(gravitational_constant, planet_mass);
         gravitational_force = (float)((gravitational_constant * planet_mass * ship_mass) / (dec_distance * dec_distance));
 
-        gravity = gravitational_force * angle;
+        gravity = gravitational_force * gravity_vector;
 
     }
 }

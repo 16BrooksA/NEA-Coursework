@@ -11,25 +11,21 @@ public class Spaceflight : MonoBehaviour
     public float pitch;
     public float roll;
     public Vector3 grav;
-    public float myangle;
 
     public ParticleSystem particles;
 
     public GameObject Planet1;
 
-    public GameObject BAB;
-    public GameObject fly;
-
     // Vector3 takes value for x, y, z axis
     public Vector3 moveDirection;
     public Vector3 rotateDirection;
 
-    new Rigidbody rigidbody;
+    public Rigidbody spaceship_rigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        spaceship_rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -50,8 +46,6 @@ public class Spaceflight : MonoBehaviour
     // FixedUpdate is called 50 times per second
     void FixedUpdate()
     {
-        myangle = Vector3.SignedAngle(BAB.transform.position, fly.transform.position, Vector3.up);
-
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
         jumpMovement = Input.GetAxisRaw("Jump");
@@ -66,10 +60,10 @@ public class Spaceflight : MonoBehaviour
         Planet planet = Planet1.GetComponent<Planet>();
         grav = planet.spaceship_gravity;
 
-        rigidbody.AddForce(moveDirection);
-        rigidbody.AddTorque(rotateDirection);
+        spaceship_rigidbody.AddForce(moveDirection);
+        spaceship_rigidbody.AddTorque(rotateDirection);
 
-        rigidbody.AddForce(grav);
+        spaceship_rigidbody.AddForce(grav);
 
         /*if(verticalMovement < 0 || verticalMovement > 0)
         {
