@@ -34,7 +34,7 @@ public class CelestialBody : MonoBehaviour
         body2 = GameObject.Find(small_body);
         
         //6371146 = radius of earth (use this to scale sizes of planets)
-        distance = Vector3.Distance(body2.transform.position, body1.transform.position)* 20000;
+        distance = Vector3.Distance(body2.transform.position, body1.transform.position)* 25484;
         dec_distance = Convert.ToDouble(distance);
 
         gravity_vector = (body2.transform.position - body1.transform.position);
@@ -52,10 +52,10 @@ public class CelestialBody : MonoBehaviour
 
         body2 = GameObject.Find(small_body);
 
-        distance = Vector3.Distance(body2.transform.position, body1.transform.position) * 20000;
+        distance = Vector3.Distance(body2.transform.position, body1.transform.position) * 25484;
         dec_distance = Convert.ToDouble(distance);
 
-        orbital_velocity = (Mathf.Sqrt((float)((gravitational_constant * big_mass) / dec_distance))) / 20000;
+        orbital_velocity = (Mathf.Sqrt((float)((gravitational_constant * big_mass) / dec_distance))) / 1;
 
         return orbital_velocity;
     }

@@ -32,13 +32,13 @@ public class Moon : CelestialBody
         get_x_velocity(orbital_velocity);
         get_z_velocity(orbital_velocity);
 
-        moon_rigidbody.velocity = new Vector3(x_velocity, 0, z_velocity);
+        moon_rigidbody.velocity = new Vector3(x_velocity * Time.deltaTime, 0, z_velocity * Time.deltaTime);
 
-        Planet1 = GameObject.Find("BigAl_b");
+        /*Planet1 = GameObject.Find("BigAl_b");
         Planet planet = Planet1.GetComponent<Planet>();
-        grav = planet.moon_gravity;
+        grav = planet.moon_gravity;*/
 
-        moon_rigidbody.AddForce(grav);
+        //moon_rigidbody.AddForce(grav);
     }
 
     public Double get_moon_mass()
