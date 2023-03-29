@@ -26,6 +26,10 @@ public class CelestialBody : MonoBehaviour
 
     public GameObject body1;
     public GameObject body2;
+    public GameObject origin_point;
+
+    public Vector3 body1_vector;
+    public Vector3 body2_vector;
 
     public Vector3 calculate_gravity(string big_body, Double big_mass, string small_body, Double small_mass)
     {
@@ -55,14 +59,20 @@ public class CelestialBody : MonoBehaviour
         distance = Vector3.Distance(body2.transform.position, body1.transform.position) * 25484;
         dec_distance = Convert.ToDouble(distance);
 
-        orbital_velocity = (Mathf.Sqrt((float)((gravitational_constant * big_mass) / dec_distance))) / 1;
+        orbital_velocity = (Mathf.Sqrt((float)((gravitational_constant * big_mass) / dec_distance))) / 25484;
 
         return orbital_velocity;
     }
 
-    public float get_x_velocity(float orbital_velocity)
+    public float get_x_velocity(string big_body, float orbital_velocity, string small_body, string point)
     {
-        x_local_angle = Vector3.Angle(body1.transform.position, body2.transform.position);
+        body1 = GameObject.Find(big_body);
+        
+        body2 = GameObject.Find(small_body);
+
+        origin_point = GameObject.Find(point);
+
+        x_local_angle = Vector3.Angle(body1.transform.position - origin_point.transform.position, body2.transform.position - body1.transform.position);
 
         x_radian_angle = x_local_angle * (float)(Math.PI / 180);
 
@@ -71,9 +81,15 @@ public class CelestialBody : MonoBehaviour
         return x_velocity;
     }
 
-    public float get_z_velocity(float orbital_velocity)
+    public float get_z_velocity(string big_body, float orbital_velocity, string small_body, string point)
     {
-        z_local_angle = Vector3.SignedAngle(body1.transform.position, body2.transform.position, Vector3.up);
+        body1 = GameObject.Find(big_body);
+
+        body2 = GameObject.Find(small_body);
+
+        origin_point = GameObject.Find(point);
+
+        z_local_angle = Vector3.SignedAngle(body1.transform.position - origin_point.transform.position, body2.transform.position - body1.transform.position, Vector3.up);
 
         z_radian_angle = z_local_angle * (float)(Math.PI / 180);
 

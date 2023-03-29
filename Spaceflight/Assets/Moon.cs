@@ -5,20 +5,39 @@ using UnityEngine;
 
 public class Moon : CelestialBody
 {
+    public Double sun_mass = 1.989e30;
     public Double planet_mass = 5.9722e24;
     public Double moon_mass = 7.347e22;
-    public string BigAl_b = "BigAl_b";
-    public string BigAl_b_i = "BigAl_b_i";
+    public Double ship_mass;
+    public string Sun = "Sun";
+    public string Earth = "Earth";
+    public string Luna = "Luna";
     public Vector3 grav;
+    public Vector3 spaceship_gravity;
+
+    public float earth_sun_orbital_velocity;
+    public float earth_sun_x_velocity;
+    public float earth_sun_z_velocity;
+    public float moon_earth_orbital_velocity;
+    public float moon_earth_x_velocity;
+    public float moon_earth_z_velocity;
+
+    public float total_moon_x_velocity;
+    public float total_moon_z_velocity;
 
     public Rigidbody moon_rigidbody;
 
     public GameObject Planet1;
+    public GameObject spaceship;
 
     // Start is called before the first frame update
     void Start()
     {
         moon_rigidbody = GetComponent<Rigidbody>();
+
+        spaceship = GameObject.Find("Spaceship");
+        Spaceship ship = spaceship.GetComponent<Spaceship>();
+        ship_mass = Convert.ToDouble(ship.get_spaceship_mass());
     }
 
     // Update is called once per frame
@@ -27,18 +46,36 @@ public class Moon : CelestialBody
         //get_orbital_velocity("BigAl_b", planet_mass, "BigAl_b_i");
 
         //rigidbody.velocity = new Vector3(orbital_velocity, 0, 0);
-        get_orbital_velocity("BigAl_b", planet_mass, "BigAl_b_i");
 
-        get_x_velocity(orbital_velocity);
-        get_z_velocity(orbital_velocity);
 
-        moon_rigidbody.velocity = new Vector3(x_velocity * Time.deltaTime, 0, z_velocity * Time.deltaTime);
 
-        /*Planet1 = GameObject.Find("BigAl_b");
-        Planet planet = Planet1.GetComponent<Planet>();
-        grav = planet.moon_gravity;*/
+        earth_sun_orbital_velocity = get_orbital_velocity("Sun", sun_mass, "Earth");
+
+        earth_sun_x_velocity = get_x_velocity("Sun", earth_sun_orbital_velocity, "Earth", "SunOrigin");
+        earth_sun_z_velocity = get_z_velocity("Sun", earth_sun_orbital_velocity, "Earth", "SunOrigin");
+
+        moon_earth_orbital_velocity = get_orbital_velocity("Earth", planet_mass, "Luna");
+
+        moon_earth_x_velocity = get_x_velocity("Earth", moon_earth_orbital_velocity, "Luna", "EarthOrigin");
+        moon_earth_z_velocity = get_z_velocity("Earth", moon_earth_orbital_velocity, "Luna", "EarthOrigin");
+
+        total_moon_x_velocity = moon_earth_x_velocity + earth_sun_x_velocity;
+        total_moon_z_velocity = moon_earth_z_velocity + earth_sun_z_velocity;
+
+        moon_rigidbody.velocity = new Vector3(total_moon_x_velocity * Time.deltaTime, 0, total_moon_z_velocity * Time.deltaTime);
+
+
+        //spaceship_gravity = calculate_gravity("Moon", moon_mass, "Spaceship", ship_mass);
+
+
+
+        //Planet1 = GameObject.Find("Earth");
+        //Planet planet = Planet1.GetComponent<Planet>();
+        //grav = planet.moon_gravity;
 
         //moon_rigidbody.AddForce(grav);
+
+
     }
 
     public Double get_moon_mass()

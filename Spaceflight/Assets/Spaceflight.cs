@@ -16,6 +16,12 @@ public class Spaceflight : MonoBehaviour
 
     public GameObject Planet1;
 
+    public GameObject solar;
+    public GameObject fly;
+    public float myangle;
+    public Vector3 toPointA;
+    public Vector3 toPointB;
+
     // Vector3 takes value for x, y, z axis
     public Vector3 moveDirection;
     public Vector3 rotateDirection;
@@ -26,6 +32,10 @@ public class Spaceflight : MonoBehaviour
     void Start()
     {
         spaceship_rigidbody = GetComponent<Rigidbody>();
+
+        solar = GameObject.Find("Sun");
+
+        fly = GameObject.Find("Spaceship");
     }
 
     // Update is called once per frame
@@ -46,6 +56,8 @@ public class Spaceflight : MonoBehaviour
     // FixedUpdate is called 50 times per second
     void FixedUpdate()
     {
+        myangle = Vector3.Angle(solar.transform.position, solar.transform.position - fly.transform.position);
+
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
         jumpMovement = Input.GetAxisRaw("Jump");
@@ -56,7 +68,7 @@ public class Spaceflight : MonoBehaviour
         moveDirection = transform.forward * verticalMovement * 10000 + transform.right * horizontalMovement * 10000 + transform.up * jumpMovement * 10000;
         rotateDirection = transform.up * yaw * 100 + transform.right * pitch * 100 + transform.forward * roll * 100;
 
-        Planet1 = GameObject.Find("BigAl_b");
+        Planet1 = GameObject.Find("Earth");
         Planet planet = Planet1.GetComponent<Planet>();
         grav = planet.spaceship_gravity;
 
