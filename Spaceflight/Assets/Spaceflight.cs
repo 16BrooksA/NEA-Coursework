@@ -10,17 +10,13 @@ public class Spaceflight : MonoBehaviour
     public float yaw;
     public float pitch;
     public float roll;
-    public Vector3 grav;
+    public Vector3 earth_grav;
+    public Vector3 moon_grav;
 
     public ParticleSystem particles;
 
     public GameObject Planet1;
-
-    public GameObject solar;
-    public GameObject fly;
-    public float myangle;
-    public Vector3 toPointA;
-    public Vector3 toPointB;
+    public GameObject moon;
 
     // Vector3 takes value for x, y, z axis
     public Vector3 moveDirection;
@@ -32,10 +28,6 @@ public class Spaceflight : MonoBehaviour
     void Start()
     {
         spaceship_rigidbody = GetComponent<Rigidbody>();
-
-        solar = GameObject.Find("Sun");
-
-        fly = GameObject.Find("Spaceship");
     }
 
     // Update is called once per frame
@@ -56,8 +48,6 @@ public class Spaceflight : MonoBehaviour
     // FixedUpdate is called 50 times per second
     void FixedUpdate()
     {
-        myangle = Vector3.Angle(solar.transform.position, solar.transform.position - fly.transform.position);
-
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
         jumpMovement = Input.GetAxisRaw("Jump");
@@ -70,12 +60,17 @@ public class Spaceflight : MonoBehaviour
 
         Planet1 = GameObject.Find("Earth");
         Planet planet = Planet1.GetComponent<Planet>();
-        grav = planet.spaceship_gravity;
+        earth_grav = planet.earth_spaceship_gravity;
+
+        moon = GameObject.Find("Luna");
+        Moon luna = moon.GetComponent<Moon>();
+        moon_grav = luna.moon_spaceship_gravity;
 
         spaceship_rigidbody.AddForce(moveDirection);
         spaceship_rigidbody.AddTorque(rotateDirection);
 
-        spaceship_rigidbody.AddForce(grav);
+        spaceship_rigidbody.AddForce(earth_grav);
+        spaceship_rigidbody.AddForce(moon_grav);
 
         /*if(verticalMovement < 0 || verticalMovement > 0)
         {
